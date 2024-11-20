@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-jqk=9=+n!ecovvxd_cv0snv7@r5$+eqf3sah4=)o=g@0-ya%o6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Leadloom.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
