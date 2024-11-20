@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base1.html" %}
+{% load static %}
+{% block content %}
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+  </head>
+  <style>
+      .c{
+          width: 340px;
+      }
+      .b{
+          padding-left: 30px;
+      }
+      .a{
+          width: 70px;
+          height: 45px;
+      }
+      .btn{
+          background-color: rgba(255, 80, 80, 0.679);
+      }
+
+                        .c{
+                            width: 340px;
+                        }
+                        .b{
+                            padding-left: 30px;
+                        }
+                        .a{
+                            width: 70px;
+                            height: 45px;
+                        }
+                        .btn{
+                            background-color: rgba(255, 80, 80, 0.679);
+                        }
+                    </style>
+  <body>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Agents</h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add User</h4>
+                    <!-- <p class="card-description"> Basic form layout </p> -->
+                    <form class="forms-sample" action="/addStaff" method="post">
+                      {% csrf_token %}
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputUsername2" name="name" placeholder="Customer Name">
+                        </div>
+                       
+                      
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" id="exampleInputEmail2" name="emailid" placeholder="Email">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Phone *</label>
+                        <div class="col-sm-9">
+                            <div class="input-group ">                                
+                                <input type="tel" class="form-control" id="exampleInputMobile" placeholder="Enter Phone number" name="phonenumber" width="100%">
+                            </div>
+                            <br>
+                        </div>
+                        
+                        {% comment %} <div class="form-group row ">
+                            <label for="exampleInputPassword" class="col-sm-3 col-form-label">Password *</label>
+                            <div class="col-sm-9 b">
+                                <input type="password" class="form-control c" id="exampleInputPassword" placeholder="Enter your password">
+                            </div>
+                        </div> {% endcomment %}
+                    </div>
+                    
+               
+                      <div class="form-group row" style="margin-top: 20px;">
+                        <label class="col-sm-3 col-form-label">Role</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="designation" style="height: 50px;">
+                                <option value="">select</option>
+                                <option value="sales">sales</option>
+                                <option value="Digital marketing">Digital marketing</option>
+                                <option value="Seo">Seo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row" style="margin-top: 20px;">
+                        <label class="col-sm-3 col-form-label">Is Co-Admin?</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="admin" style="height: 50px;">
+                                <option>select</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <button type="submit" class="btn">Add</button>
+                        <br>
+                        <br>
+                    </div>
+                  </form>
+                  <script>
+                    var input = document.querySelector("#exampleInputMobile");
+                    window.intlTelInput(input, {
+                        initialCountry: "ae",
+                        separateDialCode: true,
+                        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+                    });
+                  </script>   
+         
+
+                     
+                   
+                  </div>
+                </div>
+              </div>
+    {% endblock %}         
+  </body>
+</html>

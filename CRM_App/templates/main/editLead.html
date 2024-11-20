@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base1.html" %}
+{% load static %}
+{% block content %}
+  <head>
+  </head>
+  <body>
+<style>
+     #backbutton{
+      text-decoration:none;
+      color:white;
+     }
+    .p{
+        justify-content:center;
+      
+        color: brown;}
+    
+</style>
+<!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title p"> Update Lead </h3>
+      <nav aria-label="breadcrumb">
+        
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Customer Details</h4>
+            <!-- <p class="card-description"> Basic form layout </p> -->
+            <form class="forms-sample"method="post" action="/editLead">
+              <input type="hidden" name="origin" value="adminedit">
+              {% csrf_token %}
+              <div class="form-group row">
+                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Customer Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="customernames" id="exampleInputUsername2" value="{{ lead.CustomerName}}" placeholder="Customer Name">
+                </div>
+                <label for="exampleInputUsername2" class="col-sm-3 col-form-label"> Company Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="companynames" id="exampleInputUsername2" value="{{ lead.CompanyName}}" placeholder="Company Name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Customer Email</label>
+                <div class="col-sm-9">
+                  <input type="email" class="form-control" name="emailids" value="{{ lead.EmailId}}" id="exampleInputEmail2" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Phone *</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control"  name="phonenumbers" value="{{ lead.PhoneNumber}}" id="exampleInputMobile" placeholder="Enter Phone number">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Alternative Number</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="alternativenumbers" id="exampleInputMobile" placeholder="Enter Landline Number">
+                </div>
+              </div>
+            
+              <div class="form-group row" style="margin-top: 20px;">
+                <label class="col-sm-3 col-form-label">Agent</label>
+                <div class="col-sm-9">
+                  <select class="form-control" style="height: 50px;" name="staff" >
+                    <option value="{{lead.Staff.id}}">{{lead.Staff}}</option>
+                    {% for i in staff %}
+                                <option value="{{i.id}}">{{i.Name}}</option>
+                           {% endfor %}
+                    
+                </select>
+                </div>
+            </div>
+         
+
+             
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Lead information</h4>
+             
+                <div class="form-group row">
+
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Address</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="address" value="{{lead.address}}" id="exampleInputUsername2" placeholder="Address">
+                      </div>
+                    </div>
+              <div class="form-group row" style="margin-top: 20px;">
+                <label class="col-sm-3 col-form-label">Lead Source* </label>
+                <div class="col-sm-9">
+                  <select class="form-control" style="height: 50px;"  name="source">
+                    <option value="{{lead.Source.id}}">{{lead.Source}}</option>
+                    {% for i in source %}
+                    <option value="{{i.id}}">{{i.LeadSource}}</option>
+               {% endfor %}
+                </select>
+                </div>
+            </div>
+            <div class="form-group row" style="margin-top: 20px;">
+              <label class="col-sm-3 col-form-label">Lead Purpose </label>
+              <div class="col-sm-9">
+                <select class="form-control" style="height: 50px;" name="purpose">
+                  <option value="{{lead.Purpose.id}}">{{lead.Purpose}}</option>
+                  {% for i in purpose %}
+                  <option value="{{i.id}}">{{i.LeadPurpose}}</option>
+             {% endfor %}
+              </select>
+              </div>
+              
+          </div>
+          <div class="form-group row" style="margin-top: 20px;">
+            <label class="col-sm-3 col-form-label">Enquiry Status </label>
+            <div class="col-sm-9">
+              <select class="form-control" style="height: 50px;" name="status">
+                <option value="{{lead.Status.id}}">{{lead.Status}}</option>
+                {% for i in status %}
+                <option value="{{i.id}}">{{i.LeadStatus}}</option>
+           {% endfor %}
+            </select>
+            </div>
+        </div>
+        <div class="form-group row" style="margin-top: 20px;">
+          <label class="col-sm-3 col-form-label">Lead Type</label>
+          <div class="col-sm-9">
+            <select class="form-control" style="height: 50px;" name="type">
+              {% comment %} <option value="{{ lead.Type }}">{{ lead.Type }}</option> {% endcomment %}
+                <option value="Hot" {% if lead.Type == 'Hot' %} selected {% endif %}>Hot</option>
+                <option value="Cool" {% if lead.Type == 'Cool' %} selected {% endif %}>Cool</option>
+              
+          </select>
+          </div>
+          <div class="form-group row">
+          <h4 class="card-title"style="padding-top:30px;">Notes</h4>
+          <p>Customer Feedback</p>
+          <div class="col-sm-9">
+            <textarea class="form-control mt-3" name="notes" onkeydown="if(event.keyCode == 13) return false;">{{lead.Note}}</textarea>
+        </div>
+          </div>
+      </div>
+     
+              
+           
+          </div>
+        </div>
+      </div>
+      
+    <!-- Buttons outside the card -->
+    <div class="col-12 mt-3">
+        <button type="submit" class="btn btn-primary"style="background-color:red;opacity: 50%;">Update</button>&nbsp;&nbsp;
+        <button type="button" id="backbutton" class="btn btn-primary"style="background-color:red;opacity: 50%;"><a style="text-decoration: none; color: white" href="/lead">Back</a></button>
+
+        <br><br>
+      </form>
+        
+    </div>
+</body>
+{% endblock %}
+</html>    

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base1.html" %}
+{% load static %}
+{% block content %}
+  <head>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+
+        <style>
+            .p{
+                justify-content:center;
+              
+                color: brown;}
+            .c{
+              height: 180px;
+              border-radius: 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              justify-content: space-evenly;
+
+              
+              
+            }
+            .ptext{
+              font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            .link{
+              
+            }
+            .main-panel{
+                width: 100%;
+            }
+            .link a{
+                text-decoration: none;
+                color: red;
+            }
+        </style>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title p">Settings </h3>
+              <nav aria-label="breadcrumb">
+                
+              </nav>
+            </div>
+            <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-2 g-lg-3">
+        <div class="col  col-sm-12">
+            <div class="p-3 c border bg-light"><b>Account</b>
+            <p class="ptext">
+              Manage your login credentials, settings,and preferences 
+            </p>
+            <p class="link"><a href="">Account settings</a></p>
+            </div>
+           
+        </div>
+        <div class="col  col-sm-12">
+          <div class="p-3 c border bg-light"><b>Lead Settings</b>
+          <p class="ptext">
+            Configure lead status, source, type, and additional fields for seamless management
+          </p>
+          <p class="link"><a href="/leadpurpose">Lead settings</a></p>
+          </div>
+         
+      </div> <div class="col  col-sm-12">
+        <div class="p-3 c border bg-light"><b>Deal Settigs</b>
+        <p class="ptext">
+          Organize task categories, priorities, and customizations for improved productivity
+        </p>
+        <p class="link"><a href="">Deal settings</a></p>
+        </div>
+       
+    </div> <div class="col  col-sm-12">
+      <div class="p-3 c border bg-light"><b>Task Settings</b>
+      <p class="ptext">
+        Organize task categories, priorities, and customizations for improved productivity
+      </p>
+      <p class="link"><a href="">Task settings</a></p>
+      </div>
+     
+  </div> <div class="col  col-sm-12">
+    <div class="p-3 c border bg-light"><b>Notifications</b>
+    <p class="ptext">
+    Customize alerts, messages, and updates for your account 
+    </p>
+    <p class="link"><a href="">Notifications settings</a></p>
+    </div>
+   
+</div> <div class="col  col-sm-12">
+  <div class="p-3 c border bg-light"><b>Subscriptions</b>
+  <p class="ptext">
+    View, modify, or cancel your active services and memberships
+  </p>
+  <p class="link"><a href="">Subscription settings</a></p>
+  </div>
+ 
+</div> <div class="col  col-sm-12">
+  <div class="p-3 c border bg-light"><b>General</b>
+  <p class="ptext">
+Manage your general settings, and preferences  </p>
+  <p class="link"><a href="">General settings</a></p>
+  </div>
+ 
+</div>
+    </div>
+</div>
+
+            
+              
+      
+      
+        </div>
+      
+      </div>
+    
+    </div>
+    {% endblock %}
+  </body>
+</html>

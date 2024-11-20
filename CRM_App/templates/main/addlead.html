@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base1.html" %}
+{% load static %}
+{% block content %}
+  <head>
+    <!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Spectrum Color Picker CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css" rel="stylesheet">
+  </head>
+  <style>
+    .m{
+      margin-left:10px;
+      font-size:20px;
+    }
+  </style>
+  <style>
+    .small-btn {
+padding: 0.2rem 0.4rem; /* Adjust padding as needed */
+font-size: 0.875rem; /* Adjust font size as needed */
+margin-left: 10px;
+
+
+
+}
+
+   .k{
+     display: flex;
+     flex-direction: row;
+   }
+  </style>
+
+  <body>
+
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Form elements </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Customer Details</h4>
+                    <!-- <p class="card-description"> Basic form layout </p> -->
+                    <form class="forms-sample" method="POST" action="/addLead">
+                        {% csrf_token %}
+                      <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Customer Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="customername" id="exampleInputUsername2" placeholder="Customer Name">
+                        </div>
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label"> Company Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="companyname" id="exampleInputUsername2" placeholder="Company Name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" name="emailid" id="exampleInputEmail2" placeholder="Email">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Phone *</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="phonenumber" id="exampleInputMobile" placeholder="Enter Phone number">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Landline Number</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputMobile" placeholder="Enter Landline Number">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">More Phone Numbers</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="alternativenumber" id="exampleInputMobile" placeholder="Phone number">
+                        </div>
+                      </div>
+                      <div class="form-group row" style="margin-top: 20px;">
+                        <label class="col-sm-3 col-form-label">Agent</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" style="height: 50px;" name="staff">
+                                <option value="">select agents</option>
+                                {% for i in staff %}
+                                <option value="{{i.id}}">{{i.Name}}</option>
+                           {% endfor %}
+                                
+                            </select>
+                        </div>
+                    </div>
+                      
+                      <div class="form-group row">
+
+                      <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Address</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputUsername2" name="address"placeholder="Address">
+                        </div>
+                      </div>
+
+                     
+                    
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Lead information</h4>
+                    
+                      <div class="form-group row" style="margin-top: 20px;">
+                        <label class="col-sm-3 k col-form-label">Lead Source<button type="button"class="btn btn-primary small-btn"style="background-color:red;opacity: 50%;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="mdi mdi-hospital "></i></button> </label>
+                        <div class="col-sm-9">
+                            <select class="form-control" style="height: 50px;"  name="source">
+                                <option value="" selected>select Lead source</option>
+                                   {% for i in source %}
+                                        <option value="{{i.id}}">{{i.LeadSource}}</option>
+                                   {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row" style="margin-top: 20px;">
+                      <label class="col-sm-3 k col-form-label">Lead Purpose<button type="button"class="btn btn-primary small-btn"style="background-color:red;opacity: 50%;" data-bs-toggle="modal" data-bs-target="#exampleModall"><i class="mdi mdi-hospital "></i></button> </label>
+                      <div class="col-sm-9">
+                          <select class="form-control" style="height: 50px;" name="purpose">
+                              <option value="">select Lead Purpose</option>
+                              {% for i in purpose %}
+                                        <option value="{{i.id}}">{{i.LeadPurpose}}</option>
+                                   {% endfor %}
+                          </select>
+                      </div>
+                      
+                  </div>
+                  <div class="form-group row" style="margin-top: 20px;">
+                    <label class="col-sm-3 k col-form-label">Lead Status<button type="button"class="btn btn-primary small-btn"style="background-color:red;opacity: 50%;" data-bs-toggle="modal" data-bs-target="#exampleModalll"><i class="mdi mdi-hospital "></i></button> </label>
+                    <div class="col-sm-9">
+                        <select class="form-control" style="height: 50px;" name="status">
+                            <option>select Lead Status </option>
+                            {% for i in status %}
+                            <option value="{{i.id}}">{{i.LeadStatus}}</option>
+                       {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row" style="margin-top: 20px;">
+                  <label class="col-sm-3 col-form-label">Lead Type</label>
+                  <div class="col-sm-9">
+                      <select class="form-control" style="height: 50px;" name="type">
+                          <option value="">select Lead Type</option>
+                          <option value="Hot">Hot</option>
+                          <option value="Cool">cool</option>
+                          
+                      </select>
+                  </div>
+                  <div class="form-group row">
+                  <h4 class="card-title"style="padding-top:30px;">Notes</h4>
+                  <p>Customer Feedback</p>
+                  <div class="col-sm-9">
+                  <textarea class="form-control mt-3" name="note" placeholder="Feedback" onkeydown="if(event.keyCode == 13) return false;"></textarea>
+                  </div>
+                  </div>
+              </div>
+             
+                      
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Followup</h4>
+                        
+                            <div class="form-group">
+                                <label for="exampleInputName1">Title</label>
+                                <input type="text" class="form-control" name="Followup_title" id="exampleInputName1" placeholder="Enter Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputDate1">Date</label>
+                                <input type="date" class="form-control" name="Followup_date" id="exampleInputDate1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputTime1">Time</label>
+                                <input type="time" class="form-control" name="Followup_time" id="exampleInputTime1">
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Buttons outside the card -->
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-secondary"><a style="text-decoration: none; color: white" href="/lead">Back</a></button>
+                <br>
+                <br>
+            </div>
+        </form>     
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">ADD LEAD SOURCE</h1>
+                <button type="button" class="btn-close btnn" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form method="post" action="/source">
+                {% csrf_token %}
+              <div class="modal-body">
+                <label for="exampleFormControlInput1" class="form-label">Source</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Source" name="leadsource">
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary"style="background-color:red;opacity: 50%;">+ ADD</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="exampleModall" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">ENQUIRY PURPOSE</h1>
+                <button type="button" class="btn-close btnn" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form method="post" action="/purpose">
+                <input type="hidden" name="origin" value="lead">
+                {% csrf_token %}
+              <div class="modal-body">
+                <label for="exampleFormControlInput1" class="form-label">Purpose Title</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" name="leadPurpose">
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary"style="background-color:red;opacity: 50%;">SUBMIT</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="exampleModalll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">ADD LEAD STATUS</h1>
+                <button type="button" class="btn-close btnn" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form method="post" action="/status">
+                {% csrf_token %}
+              <div class="modal-body">
+                <label for="exampleFormControlInput1" class="form-label">Status</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Source" name="leadstatus">
+              </div>
+              <div class="mb-3">
+                <label for="colorInput" class="form-label">Color</label>
+                <input type="text" class="form-control" id="colorInput" placeholder="Select Color" name="color">
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary"style="background-color:red;opacity: 50%;">+ ADD</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Spectrum Color Picker JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+        <script>
+          // Initialize Spectrum Color Picker
+          $("#colorInput").spectrum();
+        </script>
+          <!-- content-wrapper ends -->
+  </body>
+  {% endblock %}
+</html>

@@ -1,0 +1,448 @@
+{% extends 'base1.html' %}
+{% block content %}
+{% load static %}
+<style>
+.profile-container{
+        width: 100%;
+        height: auto;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    .credits-cards{
+        width: 100%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        background-image: linear-gradient(to bottom, #e371df, #e367de, #e35cde, #e250dd, #e243dc);
+    }
+    .credits-cards-2{
+        width: 100%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        background-image: linear-gradient(to bottom, #0079ef, #1481ef, #258aee, #3691ed, #4599eb);
+    }
+    .credits-cards-3{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        border-radius: 5px;
+        background-image: linear-gradient(to bottom, #753af2, #6c33e5, #632dd7, #5a26ca, #511fbd);
+    }
+    .credits-card-inner{
+        width: 90%;
+        height: 85%;
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        align-items: center;
+        border-bottom: 3px solid #ede3f1;
+    }
+    .credits-card-inner span{
+        color: white;
+    }
+    .credits-card-inner h3{
+        color: white;
+    }
+    .plan-details{
+        height: 70px;
+        width: 100%;
+        display: flex;
+        margin: auto;
+        padding-left: 3%;
+        align-items: center;
+        justify-content: flex-start;
+        border-bottom: 1px solid rgb(203, 203, 203);
+
+    }
+    .plan-details h3{
+        font-size: 18px;
+        opacity: 0.7;
+    }
+    .active-details{
+        height: 100px;
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .account-status{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; 
+    }
+    .account-status h1{
+        color: green;
+        font-size: 20px;
+    }
+    .account-status span{
+        opacity: 0.7;
+    }
+    .profile-picture{
+        height: 160px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 5px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        
+    }
+    .profile-details{
+        height: 320px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 5px;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .profile-picture h3{
+        font-size: 22px;
+    }
+    .profile-image-picker{
+        height: 100px;
+        width: 100px;
+        overflow: hidden;
+        position:relative;
+
+    }
+    .profile-image-picker img{
+        width: 100%;
+        height: 100%;
+        border-radius:50%;
+        object-fit: cover;
+    }
+    .profile-image-picker label{
+        position: absolute;
+        bottom: 0;
+        right:0;
+        z-index:2;
+        cursor: pointer;
+
+    }
+    .profile-image-picker label span{
+        font-size: 25px;
+        color: red;
+    }
+    .contact-edit{
+        height: 50px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgb(197, 196, 196);
+
+    }
+    .contact-edit button{
+        border: hidden;
+        background: none;
+    }
+    .contact-edit button span{
+        color: blue;
+        font-size: 20px;
+    }
+    .contact-edit h3{
+        font-size: 19px;
+    }
+    .profile-details p span{
+        margin-right: 10px;
+    }
+    .profile-details button{
+        background: none;
+        border: hidden;
+    }
+    .profile-details button i{
+        color: black;
+    }
+    .my-profile-dts{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .my-profile-dts-head{
+        width: 100%;
+        height: 50px;
+        align-items: center;
+        justify-content: flex-start;
+        display: flex;
+        border-bottom: 1px solid rgb(197, 196, 196);
+
+    }
+    .my-profile-dts-head h3{
+        font-size: 20px;
+        color: rgb(200, 4, 4);
+    }
+    .profile-data{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        height: 60px;
+        border-bottom: 1px solid rgb(220, 220, 220);
+
+    }
+    .profile-data span{
+        opacity: 0.7;
+        font-size: 14px;
+    }
+    @media(min-width:320px) and (max-width:480px){
+        .profile-image-picker label{
+            bottom: -20px;
+        }
+        .active-details{
+            width: 100%;
+        }
+    }
+</style>
+<div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">My Profile </h3>
+            </div>
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-md-12 ">
+                        <div class="profile-container pb-4">
+                            <div class="row px-3 gy-3 pt-3">
+                                <div class="col-md-4">
+                                    <div class="credits-cards">
+                                        <div class="credits-card-inner">
+                                            <span>Total Credits</span>
+                                            <h3>0</h3>
+
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="credits-cards-2">
+                                        <div class="credits-card-inner">
+                                            <span>Used Credits</span>
+                                            <h3>0</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="credits-cards-3">
+                                        <div class="credits-card-inner">
+                                            <span>Credits Balance</span>
+                                            <h3>0</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="plan-details">
+                                        <h3>Plan Details</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="active-details">
+                                        <div class="account-status">
+                                            <h1>ACTIVE</h1>
+                                            <span>Account Status</span>
+
+                                        </div>
+                                        <div class="payment-plans">
+                                            <p>No Active Plans</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row px-3">
+                                        <div class="col-md-5">
+                                            <div class="row gy-4">
+                                                <div class="col-md-12">
+                                                {% for i in admin %}
+                                                <div class="profile-picture">
+                                                    <div class="profile-image-picker">
+                                                    {% if i.Image %}
+                                                    <img id="output" src="{{ i.Image.url }}" alt="image">
+                                                    {% else %}
+                                                    <img id="output" src="{% static 'img/profile.jpeg' %}" alt="placeholder image">
+                                                    {% endif %}
+                                                    <label for="file">
+                                                    <span class="mdi mdi-plus-circle"></span></label>
+                                                    <input id="file" type="file" onchange="changeProfilePicture(event)" style="display: none;"/>
+                                                    </div>
+                                                        <h3>{{i.Name}}</h3>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="profile-details">
+                                                        <div class="contact-edit">
+                                                            <h3>Contact info</h3>
+                                                            <button data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="mdi mdi-pencil"></span></button>
+                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                  <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                      <h5 class="modal-title text-center" id="exampleModalLabel">UPDATE MY PROFILE PICTURE</h5>
+                                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span class="mdi mdi-close"></span></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form method="post" action="/editAdmin" enctype="multipart/form-data">
+                                                                            {% csrf_token %}
+                                                                            <div class="mb-3">
+                                                                              <label for="recipient-name" class="col-form-label">Names</label>
+                                                                              <input type="text" class="form-control" id="recipient-name" value="{{i.Name}}" name="name">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                              <label for="message-text" class="col-form-label">Email</label>
+                                                                              <input type="text" class="form-control" id="recipient-email" value="{{i.EmailId}}" name="emailid">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="message-text" class="col-form-label">Phone Number</label>
+                                                                                <input type="text" class="form-control" id="recipient-tid" value="{{i.PhoneNumber}}" name="phonenumber">
+                                                                              </div>
+                                                                              <div class="mb-3">
+                                                                                <label for="recipient-name" class="col-form-label">Place</label>
+                                                                                <input type="text" class="form-control" id="recipient-name" value="{{i.Place}}" name="place">
+                                                                              </div>
+                                                                              <div class="mb-3">
+                                                                                <label for="message-text" class="col-form-label">City</label>
+                                                                                <input type="text" class="form-control" id="recipient-email" value="{{i.City}}" name="city">
+                                                                              </div>
+                                                                              <div class="mb-3">
+                                                                                  <label for="message-text" class="col-form-label">State</label>
+                                                                                  <input type="text" class="form-control" id="recipient-tid" value="{{i.State}}" name="state">
+                                                                                </div>
+                                                                              <div class="mb-3">
+                                                                                <label for="message-text" class="col-form-label">Country</label>
+                                                                                <textarea class="form-control" name="country" id="message-address">{{i.Country}}</textarea>
+                                                                              </div>
+                                                                              {% comment %} <div class="mb-3">
+                                                                                <label for="message-text" class="col-form-label">GST Number</label>
+                                                                                <input type="text" class="form-control" id="recipient-gst" value="Sandra">
+                                                                              </div>
+                                                                              <div class="mb-3">
+                                                                                <label for="message-text" class="col-form-label">Upload Logo</label>
+                                                                                <input type="file" class="form-control" id="recipient-logo" value="Sandra">
+                                                                              </div> {% endcomment %}
+                                                                              <div>
+                                                                                <button type="submit" class="btn btn-primary text-dark">Update</button>
+                                                                              </div>
+                                                                              
+                                                                          </form>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                        </div>
+                                                        <p class="mt-3"><span class="mdi mdi-map-marker"></span>{{i.Name}}</p>
+                                                        <p><span class="mdi mdi-cellphone"></span>{{i.PhoneNumber}}</p>
+                                                        <p><span class="mdi mdi-email"></span>{{i.EmailId}}</p>
+                                                        <p><span class="mdi mdi-earth"></span>Not Available</p>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="my-profile-dts">
+                                                <div class="my-profile-dts-head">
+                                                    <h3>My Profile Details</h3>
+                                                </div>
+                                                <div class="profile-data">
+                                                    <span>Name</span>
+                                                    <span>{{i.Name}}</span>
+                                                </div>
+                                                <div class="profile-data">
+                                                    <span>Email Id</span>
+                                                    <span>{{i.EmailId}}</span>
+                                                </div>
+                                                <div class="profile-data">
+                                                    <span>Mobile Number</span>
+                                                    <span>{{i.PhoneNumber}}</span>
+                                                </div>
+                                                <div class="profile-data">
+                                                    <span>Address</span>
+                                                    <span>{{i.Place}}  {{i.City}}  {{i.State}}  {{i.Country}}</span>
+                                                </div>
+                                                {% comment %} <div class="profile-data">
+                                                    <span>GST Number</span>
+                                                    <span>0</span>
+                                                </div> {% endcomment %}
+                                                <div class="profile-data">
+                                                    <span>Date of Registration</span>
+                                                    <span>{{i.created_at}}</span>
+                                                </div>
+                                                <div class="profile-data">
+                                                    <span>Account Status</span>
+                                                    <span>Active</span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+   
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+<script>
+function changeProfilePicture(event) {
+    var file = event.target.files[0];
+    var formData = new FormData();
+    formData.append('image', file);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/update_profile_picture', true);
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            // Success: Update the image source
+            var image = document.getElementById("output");
+            image.src = URL.createObjectURL(file);
+        } else {
+            // Error: Handle the error case
+            console.error('Error:', xhr.statusText);
+        }
+    };
+
+    xhr.onerror = function () {
+        console.error('Request failed');
+    };
+
+    xhr.send(formData);
+}
+</script>
+
+    {% endblock %}

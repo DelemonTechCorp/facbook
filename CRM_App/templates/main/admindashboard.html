@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base1.html" %}
+{% load static %}
+{% block content %}
+  <head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     </head>
+  <script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawPurposeChart);
+
+  function drawPurposeChart() {
+      var data = google.visualization.arrayToDataTable({{ purpose_data|safe }});
+
+      var options = {
+          legend: 'none'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart-2'));
+      chart.draw(data, options);
+  }
+</script>
+
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawSourceChart);
+
+  function drawSourceChart() {
+      var datas = google.visualization.arrayToDataTable({{ source_data|safe }});
+
+      var options = {
+          legend: 'none'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      chart.draw(datas, options);
+  }
+</script>
+
+  <style>
+    .lead-status-task{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: auto;
+      background-color: white;
+    }
+    .d{
+      width: 90%;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-evenly;
+      height: auto;
+    }
+    .deal-card{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 250px;
+      padding: 5%;
+      border-radius: 10px;
+      background-color: white;
+    }
+    .deal-card h3{
+      font-size: 16px;
+    }
+    .deal-card span{
+      font-size: 12px;
+    }
+    .card-leads{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+    }
+    {% comment %} .lead-status-interested{
+        width: 90%;
+        display: flex;
+        height: 35px;
+        border-bottom: 1px solid rgb(230, 230, 230);
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .lead-status-interested span i{
+        color: #648A0F;
+        margin-right: 8px;
+    }
+    .lead-status-completed{
+        width: 90%;
+        display: flex;
+        height: 35px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .lead-status-completed span i{
+        color: #000000;
+        margin-right: 8px;
+    }
+    .lead-status-new{
+        width: 90%;
+        border-bottom: 1px solid rgb(230, 230, 230);
+        height: 35px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .lead-status-new span i{
+        color: #148A0F;
+        margin-right: 8px;
+    }
+    .lead-status-pending{
+        width: 90%;
+        display: flex;
+        border-bottom: 1px solid rgb(230, 230, 230);
+        flex-direction: row;
+        height: 35px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .lead-status-pending span i{
+        color: #4A86E8;
+        margin-right: 8px;
+    }
+    .lead-status-done{
+        width: 90%;
+        height: 35px;
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid rgb(230, 230, 230);
+        align-items: center;
+        justify-content: space-between;
+    }
+    .lead-status-done span i{
+        color: #00FF00;
+        margin-right: 8px;
+    }
+    .lead-status-rejected{
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        height: 35px;
+        border-bottom: 1px solid rgb(230, 230, 230);
+        align-items: center;
+        justify-content: space-between;
+    }
+    .lead-status-rejected span i{
+        color: #FF0000;
+        margin-right: 8px;
+    } {% endcomment %}
+    .lead-status-item {
+    width: 90%;
+    height: 35px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lead-status-item span i {
+     margin-right: 8px;
+}
+    .cardd-body {
+        padding: 10px; /* Adjust padding for a more compact look */
+        height: auto; /* Reset height to auto to accommodate all content */
+        overflow: hidden; /* Hide overflow content */
+    }
+    
+    .cardd {
+        height: auto; /* Reset height to auto */
+        width: 100%;
+        border-radius: 5px;
+    }
+    
+    .col-md-2 {
+        max-width: 100%; /* Ensure cards take full width on mobile */
+        flex: 0 0 100%; /* Ensure cards take full width on mobile */
+        margin-bottom: 10px; /* Add some margin between cards */
+    }
+    
+    @media (min-width: 768px) {
+        .col-md-2 {
+            max-width: calc(16.666% - 20px); /* Adjust width for larger screens */
+            flex: 0 0 calc(16.666% - 20px); /* Adjust flex properties for larger screens */
+            margin-bottom: 0; /* Reset margin for larger screens */
+        }
+    }
+    </style>
+    
+
+    
+  <body>
+
+      <!-- partial:partials/_navbar.html -->
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-danger text-white me-2">
+                  <i class="mdi mdi-home"></i>
+                </span> Dashboard
+              </h3>
+              <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">
+                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-md-2 stretch-card grid-margin">
+    <div class="cardd" style="background-color: #f7cd89be;">
+        <div class="card-body">
+            <h6 class="font-weight-normal mb-3">{{ today }}</h6> 
+            <h4 class="font-weight-normal mb-3">Today<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+            </h4>
+        </div>
+    </div>
+</div>
+<div class="col-md-2 stretch-card grid-margin">
+    <div class="cardd" style="background-color: #6b9af9b4;">
+        <div class="card-body">
+            <h6 class="font-weight-normal mb-3">{{ weekly }}</h6>
+            <h4 class="font-weight-normal mb-3">Weekly<i class="mdi mdi-diamond mdi-24px float-right"></i>
+            </h4>
+        </div>
+    </div>
+</div>
+<div class="col-md-2 stretch-card grid-margin">
+    <div class="cardd" style="background-color: #fe6262a0;">
+        <div class="card-body">
+            <h6 class="font-weight-normal mb-3">{{ monthly }}</h6>
+            <h4 class="font-weight-normal mb-3">Monthly<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+            </h4>
+        </div>
+    </div>
+</div>
+<div class="col-md-2 stretch-card grid-margin">
+    <div class="cardd" style="background-color: #fe6262a0;">
+        <div class="card-body">
+            <h6 class="font-weight-normal mb-3">{{ total }}</h6>
+            <h4 class="font-weight-normal mb-3">Total<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+            </h4>
+        </div>
+    </div>
+</div>
+
+
+              <div class="col-md-2 stretch-card grid-margin">
+                <div class="cardd" style="background-color: #bebebe;">
+                  <div class="card-body">
+                    <h4 class="font-weight-normal mb-3">Weekly Orders <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                    </h4>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 stretch-card grid-margin">
+                <div class="cardd" style="background-color: #bebebe;">
+                  <div class="card-body">
+                    <h4 class="font-weight-normal mb-3">Weekly Orders <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                    </h4>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="clearfix">
+                      <h4 class="card-title float-left">Last 15 days leads</h4>
+                      <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>
+                    </div>
+                    <canvas id="myChart" height="250"></canvas> <!-- Changed from canvas to div -->
+                  </div>
+                </div>
+              </div>
+              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              <script>
+                    const ctx = document.getElementById('myChart');
+                    
+                    const leadCounts = {{ lead_counts|safe }};
+                    
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: Array.from({length: 15}, (_, i) => (i + 1).toString()), // Numbers from 1 to leadCounts.length
+                            datasets: [{
+                                label: '# of Leads',
+                                data: leadCounts, // Use leadCounts data for the number of leads per day
+                                backgroundColor: 'rgb(255, 0, 0)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+             <div class="col-md-6 grid-margin stretch-card">
+              <div class="lead-status-task">
+              <div class="card-leads card">
+                <h4 class="card-title">Lead Status</h4>
+                {% for status in statuses %}
+            <div class="lead-status-item"  >
+                <span><i class="fa-solid fa-square" style="color:{{ status.color }}"></i>{{ status.LeadStatus }}</span>
+                <span>{{ status.count}}</span>
+            </div>
+            {% endfor %}
+            </div>
+            <div class="card-leads card">
+              <h4 class="card-title">Task status</h4>
+              <div class="lead-status-pending">
+                  <span><i class="fa-solid fa-square"></i>Total task</span>
+                  <span>5</span>
+              </div>
+              <div class="lead-status-interested">
+                <span><i class="fa-solid fa-square"></i>Pending</span>
+                <span>9</span>
+            </div>
+            <div class="lead-status-rejected">
+              <span><i class="fa-solid fa-square"></i>Overdue</span>
+              <span>3</span>
+          </div>
+          <div class="lead-status-done">
+            <span><i class="fa-solid fa-square"></i>Completed</span>
+            <span>8</span>
+        </div>
+       
+          </div>
+            
+            </div>
+          </div>
+            </div>
+            <div class="row gy-4 mb-5">
+              <div class="col-md-3">
+                <div class="deal-card">
+                  <h3 class="mt-3">Deal Pipeline</h3>
+                  <div class="lead-status-interested">
+                    <span><i class="fa-solid fa-square"></i>Deal Lost</span>
+                    <span>5</span>
+                </div>
+                <div class="lead-status-done">
+                  <span><i class="fa-solid fa-square"></i>Create Papers</span>
+                  <span>9</span>
+              </div>
+                </div>
+              
+              </div>
+              <div class="col-md-3">
+                
+                <div class="deal-card">
+                  
+                  <h3 class="mt-3">Deals in progress</h3>
+                  {% for i in admin %}
+                  <div class="d">
+                  <span>{{i.Name}}</span><span>$200</span>
+                  </div>
+                  {% endfor %}
+                  </div>
+                </div>
+              
+              <div class="col-md-3">
+                <div class="deal-card">
+                  
+                  <h3 class="mt-3">Lead Source</h3>
+                  <div id="piechart" style="width: 100%; height: 100%;"></div>
+                </div>
+               
+              </div>
+              <div class="col-md-3">
+                <div class="deal-card">
+                  <h3 class="mt-3">Lead Purpose</h3>
+                  <div id="piechart-2" style="width: 100%; height: 100%;"></div>
+                </div> 
+              </div>
+            </div>
+            
+    {% endblock %}
+  </body>
+</html>
+

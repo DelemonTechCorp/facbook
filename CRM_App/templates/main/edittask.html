@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base1.html" %}
+{% load static %}
+{% block content %}
+  <head>
+  </head>
+<style>
+    .formframe{
+        width:100%;
+        height:400px;
+        background-color: rgba(186, 186, 184, 0.371);
+        border-radius: 15px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+    }
+    .formfield{
+        font-size: 12px;
+        margin-top: 10px;
+        
+    }
+    .b{
+        border-radius: 10px;
+    }
+    .check{
+       margin-left: 10px;
+       display: flex;
+       flex-direction: row;
+    .h6{
+        margin-left: 8px;
+        padding-top: 7px;
+    }
+    }.btnn{
+        margin-left: 4px;
+        border: none;
+
+    }
+    .d{
+        height:43px;
+        margin-top:10px;
+        border-radius: 8px;
+    }
+</style>
+
+  <body>
+<div class="col-12">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title">EDIT TASK</h3>
+            </div>
+            <div class="container">
+                <div class="col-12">
+                    <div class="formframe">
+                        <div class="col-12">
+                            <form method="post" action="{% url 'editTask' %}">
+                                {% csrf_token %}
+                                <div class="row px-3 py-2">
+                                    <div class="col-12 col-md-4">
+                                        <h2 class="formfield">Title</h2>
+                                        <div class="field">
+                                            <input type="Text" class="form-control b" id="taskName" placeholder="" value="{{ task.TaskName }}" name="taskname">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <h2 class="formfield">Lead</h2>
+                                        <div class="field">
+                                            <select class="form-control d" id="assignedTo" name="leads">
+                                                <option value="{{ task.Lead.id }}">{{ task.Lead }}</option>
+                                                {% for i in leads %}
+                                                <option value="{{ i.id }}">{{ i.CustomerName }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <h2 class="formfield">Description</h2>
+                                        <div class="field">
+                                            <input type="Text" class="form-control b" id="taskDescription" placeholder="" value="{{ task.Description }}" name="description">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <h2 class="formfield">Assigned To</h2>
+                                        <div class="field">
+                                            <select class="form-control d" id="assignedTo" name="staff">
+                                                <option value="{{ task.AssignedTo.id }}">{{ task.AssignedTo }}</option>
+                                                {% for s in staffs %}
+                                                <option value="{{ s.id }}">{{ s.Name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <h2 class="formfield">Category</h2>
+                                        <div class="field">
+                                            <select class="form-control d" id="taskCategory" name="taskcategory">
+                                                <option value="{{ task.TaskCategory.id }}">{{ task.TaskCategory }}</option>
+                                                {% for category in taskcategory %}
+                                                <option value="{{ category.id }}">{{ category.TaskCategory }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <h2 class="formfield">Comment</h2>
+                                        <div class="field">
+                                            <input type="Text" class="form-control b"  name="comment" id="comment" placeholder="comment">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <h2 class="formfield">Scheduled Date</h2>
+                                        <div class="field">
+                                            <input type="date" class="form-control b" id="scheduledDate" placeholder="" value="{{date }}" name="date">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <h2 class="formfield">Scheduled Time</h2>
+                                        <div class="field">
+                                            <input type="time" class="form-control b" id="scheduledTime" placeholder="" value="{{ time }}" name="time">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <h2 class="formfield">Status</h2>
+                                        <div class="field">
+                                            <select class="form-control d" id="callstatus" name="callstatus">
+                                                {% for status in callstatus %}
+                                                <option value="{{ status.id }}">{{ status.CallStatus }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 pt-3 btnn">
+                                        <button type="submit" class="btn btn-primary align-left btnn" style="background-color: red; opacity: 50%;height: 45px;">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}       
+</body>
+</html>

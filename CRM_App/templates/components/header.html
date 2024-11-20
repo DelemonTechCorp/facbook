@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .logo{
+        height: 60px;
+        width: 200px;
+    }
+    .logo img{
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+    @media (min-width: 320px) and (max-width: 480px) {
+        .logo {
+            height: 80px;
+            width: 80px;
+            margin-left: -100px;
+        }
+        .logo img {
+            height: 80px;
+            width: 120px;   
+            margin-left: -250px;
+        }
+    }
+    </style>    
+<body>
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="{% static 'img/logo1.png' %}" alt="">
+                            </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#welcome" class="menu-item">Home</a></li>
+                            <li class="scroll-to-section" class="menu-item"><a href="{% url 'about' %}">About</a></li>
+                            <li class="scroll-to-section"><a href="#testimonials" class="menu-item">Testimonials</a>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:;">Drop Down</a>
+                                <ul>
+                                    <li><a href="" class="menu-item">About Us</a></li>
+                                    <li><a href="" class="menu-item">Features</a></li>
+                                    <li><a href="" class="menu-item">FAQ's</a></li>
+                                    <li><a href="" class="menu-item">Blog</a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a href="#contact-us" class="menu-item">Contact Us</a></li>
+                            <li class="login-button" class="menu-item">
+                                <a href="{% url 'loginForm' %}" >Login</a>
+                            </li>
+                            
+                            
+                            
+                        </ul>
+                        <!-- ***** Menu End ***** -->
+    
+                        <!-- Login Button Start -->
+                     
+                        <!-- Login Button End -->
+    
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title></title>
+<!--
+
+
+
+
+
+-->
+
+    <!-- Additional CSS Files -->
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-lava.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/owl-carousel.css' %}"> {% endcomment %}
+    <script src="https://kit.fontawesome.com/106663ca18.js" crossorigin="anonymous"></script>
+
+</head>
+<style>
+    .main-banner {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 226px 0px 120px 0px;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-banner:after {
+  content: '';
+  background-image: url();
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  top: 60px;
+  width: 262px;
+  height: 625px;
+  z-index: 1;
+}
+
+.main-banner:before {
+  content: '';
+  background-image: url("{% static 'assets/datasets/images/slider-right-dec.jpg' %}");
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  width: 1159px;
+  height: 797px;
+  z-index: -1;
+}
+
+.main-banner .left-content {
+  margin-right: 15px;
+}
+
+.main-banner .left-content h6 {
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fa65b1;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.main-banner .left-content h2 {
+  z-index: 2;
+  position: relative;
+  font-weight: 700;
+  font-size: 50px;
+  color: #2a2a2a;
+  margin-bottom: 20px;
+}
+
+.main-banner .left-content p {
+  margin-bottom: 30px;
+  margin-right: 45px;
+}
+
+.main-banner .right-image {
+  text-align: right;
+  position: relative;
+  z-index: 20;
+}
+
+.main-banner .right-image img {
+  max-width: 593px;
+}
+.container {
+    padding: 0px;
+  }
+  .intro-banner h1 {
+  font-size: 36px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  position: relative; 
+  z-index: 2;
+}
+.blog-post .down-content .border-first-button {
+  display: inline-block;
+  float: right;
+}
+.border-first-button a {
+  display: inline-block !important;
+  padding: 10px 20px !important;
+  color: #fa65b1 !important;
+  border: 1px solid #fa65b1 !important;
+  border-radius: 23px;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  transition: all .5s;
+}
+
+.border-first-button a:hover {
+  background-color: #fa65b1;
+  color: #fff !important;
+}
+.main-banner .right-image {
+  text-align: right;
+  position: relative;
+  z-index: 20;
+}
+
+.main-banner .right-image img {
+  max-width: 593px;
+}
+.services ul.nacc li .right-image img {
+  max-width: 420px;
+  float: right;
+}
+.main-banner .right-image {
+    margin: 30px auto 0px auto;
+    text-align: center;
+  }
+  .services ul.nacc li .right-image img {
+    float: none;
+  }
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.col-lg-8.offset-lg-2 {
+    margin-bottom: 0; /* Remove bottom margin */
+}
+
+.main-banner {
+    margin-top: -20px; /* Adjust the margin to bring it closer */
+    padding-top: 20px; /* Compensate for the margin with padding */
+}
+
+.center-heading {
+    margin-bottom: 0; /* Remove bottom margin */
+}
+
+.text-banner {
+    margin-bottom: 0; /* Remove bottom margin */
+}
+@media(min-width:320px)and(max-width:480px)
+{
+    .h1{
+        padding-left: 50px;
+    }
+}
+
+
+
+</style>
+<div class="welcome-area" id="welcome">
+    <div class="header-text">
+        <div class="container">
+            <div class="row">
+                <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12 "
+                    data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                    <h2>Empowering organizations to run
+                        High velocity Sales at scale </h2>
+                    <!-- <p> Explore the complete range of lead management tools to get your
+                         business the right leads to pursue and generate sales.</p>  -->
+                    <p style="margin-top: 20px;"> Explore the complete range of lead management tools to get your
+                        businessthe right leads to pursue and generate sales.</p> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-8 offset-lg-2">
+<div class="center-heading">
+    <h2> <em style="color: rgb(234, 91, 91)">Let's talk numbers</em></h2>
+    <p>Our commitment to delivering exceptional results has earned us a loyal following of satisfied
+        clients. With over 1000 organizations across various industries using our CRM, we take pride
+        in the trust that our clients place in us.</p>
+        <section class="section" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
+                        data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <i class="far fa-id-card fa-3x"></i>
+                                <h4>&nbsp;1000+</h4>
+                                <p>Registered Customers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
+                        data-scroll-reveal="enter bottom move 30px over 0.6s after 0.4s">
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <i class="far fa-id-card fa-3x"></i>
+                                <h4>&nbsp;95%</h4>
+                                <p>Customer Retention Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
+                        data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <i class="far fa-id-card fa-3x"></i>
+                                <h4>&nbsp;3500+</h4>
+                                <p>Agents</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+</div>
+
+</div>
+
+<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container m">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="row">
+                  <div class="col-lg-12 col-10 mx-auto">
+                    <h6>Digital Media Agency</h6>
+                    <h2>We Boost Your Website Traffic</h2>
+                    <p>This template is brought to you by TemplateMo website. Feel free to use this for a commercial purpose. You are not allowed to redistribute the template ZIP file on any other template website. Thank you.</p>
+                  </div>
+                  <div class="col-lg-12 col-10 mx-auto">
+                    <div class="border-first-button scroll-to-section">
+                      <a href="#contact">Free Quote</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 mx-auto">
+              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="{% static 'assets/images/slider-dec.png' %}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8 offset-lg-2">
+    <div class="center-heading">
+        <h2> <em style="color: rgb(234, 91, 91)">Our Approach to Work</em></h2>
+        <p>Delivering customer engagement on their terms. Utilize targeted SMS, emails, and voice messages to effortlessly connect with tailored customer segments, effortlessly boosting engagement.</p>
+            <section class="section" id="about">
+                <div class="container">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                        <div class="features-item">
+                            <div class="features-icon">
+                                <img src="{% static 'assets/images/bb.png' %}" alt="Empathize Image" style="width: 300px; height: auto;"> <!-- Adjust the width as needed -->
+                                <h4>&nbsp;Customer-centric</h4>
+                                <p>At Getlead, being customer-centric is not just a motto; it's our DNA. We prioritize your business's success by putting your customers at the heart of our CRM solutions.<br><br></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
+                            data-scroll-reveal="enter bottom move 30px over 0.6s after 0.4s">
+                            <div class="features-item">
+                                <div class="features-icon">
+                                  <img src="{% static 'assets/images/aa.png' %}" alt="Empathize Image" style="width: 300px; height: auto;"> <!-- Adjust the width as needed -->
+                                    <h4>&nbsp;Agility</h4>
+                                    <p>The CRM strategy at Getlead is built around agility. We provide dynamic solutions that adapt to your business's changing needs, ensuring you stay ahead in a fast-paced market.<br><br></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                          <div class="features-item">
+                              <div class="features-icon">
+                                <img src="{% static 'assets/images/cc.png' %}" alt="Empathize Image" style="width: 300px; height: auto;"> <!-- Adjust the width as needed -->
+                                <h4>&nbsp;Empathize</h4>
+                                  <p>We don't just provide CRM solutions; we empathize with your business challenges and tailor our services to ensure your success.We understand your needs because we care about your growth.</p>
+                              </div>
+                          </div>
+                      </div>
+                      
+                    </div>
+                </div>
+            </section>
+        
+    </div>
+    
+    </div>
+    <div class="col-lg-8 offset-lg-2">
+      <div class="accordion">
+          <h1 style="color: rgb(228, 88, 88)">FAQ’s</h1>
+          <div class="accordion-item">
+              <input type="checkbox" id="accordion1">
+              <label for="accordion1" class="accordion-item-title"><span class="icon"></span>1.What is Getlead CRM and how does it work?</label>
+              <div class="accordion-item-desc">Getlead CRM is a software-as-a-service (SAAS) customer relationship management tool that helps businesses manage their customer interactions, sales and marketing activities, and data all in one place. It allows you to track leads, manage contacts and accounts, automate sales tasks, and create reports and analyses to help you better understand your customer data.</div>
+          </div>
+      
+          <div class="accordion-item">
+              <input type="checkbox" id="accordion2">
+              <label for="accordion2" class="accordion-item-title"><span class="icon"></span>2.How can Getlead CRM help my business?</label>
+              <div class="accordion-item-desc">Getlead CRM can help your business by providing a central location for all your customer data, allowing you to manage sales and marketing activities more efficiently, and providing valuable insights into customer behavior and preferences.</div>
+          </div>
+      
+          <div class="accordion-item">
+              <input type="checkbox" id="accordion3">
+              <label for="accordion3" class="accordion-item-title"><span class="icon"></span>3.How much does Getlead CRM cost? Are there any hidden fees? </label>
+              <div class="accordion-item-desc">The cost of Getlead CRM will depend on the specific pricing plans offered by the company. You can find the pricing details on the Getlead CRM website. There may be additional costs or fees associated with additional features or integrations, but this would be disclosed in the pricing information.</div>
+          </div>
+      
+          <div class="accordion-item">
+              <input type="checkbox" id="accordion4">
+              <label for="accordion4" class="accordion-item-title"><span class="icon"></span>Can I try Getlead CRM before I subscribe? </label>
+              <div class="accordion-item-desc">Getlead offers a demo version of CRM that you can use to test the software and see if it's right for your business before subscribing. Contact the Getlead CRM customer support team to check if this is available.</div>
+          </div>
+      
+         
+      
+      </div>
+  </div>
+  
+
+    {% comment %} <!-- jQuery -->
+    <script src="{% static 'assets/js/jquery-2.1.0.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'assets/js/popper.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugins -->
+    <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+    <script src="{% static 'assets/js/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'assets/js/imgfix.min.js' %}"></script>
+
+    <!-- Global Init -->
+    <script src="{% static 'assets/js/custom.js' %}"></script> {% endcomment %}
+{% endblock %}
+</body>
+</html>

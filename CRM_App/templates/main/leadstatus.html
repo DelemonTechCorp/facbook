@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends "base1.html" %}
+{% load static %}
+{% block content %}
+
+  <style>
+    .side-bar-links{
+      width: 150px;
+      height: 100vh;
+      padding: 5%;
+      display: flex;
+      background-color: white;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .side-bar-links a{
+      text-decoration: none;
+      color: black;
+      font-size: 14px;
+      display: flex;
+      padding-left: 3%;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      height: 40px;
+      transition: all 0.4s ease;
+
+    }
+    .side-bar-links a:hover{
+      background-color: white;
+    }
+    .modal-open-btn{
+      background-color: #f11a3d;
+      border: hidden;
+      color: white;
+      outline: none;
+      height: 40px;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+    .page-header button span{
+      color: white;
+      margin-right: 8px;
+    }
+    .table th{
+      background-color: #DDDEDF;
+    }
+ .table td{
+  background-color: white;
+ }
+ .lead-search{
+  height: 30px;
+  width: auto;
+  border: hidden;
+  padding-left: 10px;
+  border-radius: 5px;
+ }
+ .modal-close-btn{
+      background-color: #f11a3d;
+      border: hidden;
+      color: white;
+      outline: none;
+      height: 40px;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+    .side-bar-collapse a span{
+      color: red;
+      font-size: 30px;
+    }
+    .dropdown-action {
+  position: relative;
+  display: inline-block;
+}
+.side-bar-links a:focus{
+  background-color: white;
+}
+.dropdown-content-action {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content-action a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content-action a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-action:hover .dropdown-content-action {
+  display: block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+.dropdown-content-action a span{
+  color: red;
+}
+    @media(min-width:320px) and (max-width:480px){
+        .profile-image-picker label{
+            bottom: -20px;
+        }
+        .active-details{
+            width: 100%;
+        }
+    }
+  </style>
+  <body>
+
+    <div class="side-bar-collapse">
+        <a href="#" data-bs-target="#sidebar3" data-bs-toggle="collapse" class=" p-1 text-decoration-none"><span class="mdi mdi-menu-open"></span></a>
+          <div id="sidebar3" class="collapse collapse-horizontal show border-end">
+             <div class="side-bar-links">
+              <h5 class="text-center mt-5 mb-3">Lead Settings</h5>
+              <a href="/leadpurpose">Purpose</a>
+              <a href="/leadstatus">Status</a>
+              <a href="/leadsource">Source</a>
+              <a href="">Types</a>
+              <a href="">Additional Fields</a>
+              <a href="">Deleted Leads</a>
+
+             </div>
+          </div>
+      </div>
+<!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title">Lead Settings >Status</h3>
+      <button class="modal-open-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="mdi mdi-plus"></span>Lead Purpose</button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center" id="exampleModalLabel">LEAD PURPOSE</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Purpose Title</label>
+                      <input type="text" class="form-control" id="recipient-name" value="" required>
+                    </div>
+                    <div class="w-100 text-center">
+                      <button type="submit" class="w-50 modal-close-btn">Submit</button>
+                    </div>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-header">
+      <div>
+        <select name="" id="">
+          <option value="">5</option>
+          <option value="">25</option>
+          <option value="">50</option>
+        </select>
+        <label for="">Page</label>
+      </div>
+      <input class="lead-search" type="search" name="" id="" placeholder="Search">
+
+    </div>
+    <div class="content-section">
+      <!--  /Your content goes here/ -->
+      <div class="gl-table gl-table-v2">
+          <table id="enquiry-table" class="table table-striped table-bordered nowrap table-custom" cellspacing="0" width="100%">
+              <thead>
+                  <tr>
+                      <th>Sl No</th>
+                      <th>Status</th>
+                      <th>Color</th>
+                      <th width="10%">Actions</th>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Interested</td>
+                      <td><span class="mdi mdi-rectangle" style="color: #0079ef;"></span></td>
+                      <td>
+                              <div class="dropdown-action">
+  <span class="mdi mdi-dots-vertical"></span>
+  <div class="dropdown-content-action">
+    <a data-bs-toggle="modal" data-bs-target="#exampleModal2"><span  class="mdi mdi-pencil"></span>Edit</a>
+
+    <a href="#"><span class="mdi mdi-trash-can"></span>Delete</a>
+  </div>
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="exampleModalLabel">LEAD PURPOSE</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Purpose Title</label>
+                  <input type="text" class="form-control" id="recipient-name" value="" required>
+                </div>
+                <div class="mb-3">
+                  <label for="color" class="col-form-label">Color</label>
+                  <input type="color" class="form-control" id="color"  value="#ff0000">
+                </div>
+                <div class="w-100 text-center">
+                  <button type="submit" class="w-50 modal-close-btn">Update</button>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Completed</td>
+                      <td><span class="mdi mdi-rectangle" style="color:#e243dc;"></span></td>
+                      <td><span class="mdi mdi-dots-vertical"></span></td>
+                    </tr>
+              </thead>
+          
+          </table>
+
+      </div>
+  </div>
+<!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->
+</div>
+    <script>
+        var loadFile = function (event) {
+  var image = document.getElementById("output");
+  image.src = URL.createObjectURL(event.target.files[0]);
+};
+    </script>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+  {% endblock %}
+</html>
